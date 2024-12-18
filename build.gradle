@@ -1,0 +1,36 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group = 'org.poc'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+application {
+    mainClassName = 'org.poc.Main'  // Adjust this to your main class
+}
+
+dependencies {
+
+    // JBehave Core
+    implementation 'org.jbehave:jbehave-core:5.2.0'
+
+    // Selenium
+    implementation 'org.seleniumhq.selenium:selenium-java:4.27.0'
+
+    // WebDriver Manager (optional, for automatic browser driver management)
+    implementation 'io.github.bonigarcia:webdrivermanager:5.9.1'
+
+    testImplementation 'org.slf4j:slf4j-simple:2.0.16'
+
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}
