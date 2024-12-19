@@ -56,6 +56,26 @@ public class LoginSteps {
         }
     }
 
+    @When("the user enters invalid credentials")
+    public void enterInvalidCredentials() throws IOException {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitTimeInSeconds));
+
+            WebElement usernameField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("j_idt6:username")));
+            WebElement passwordField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("j_idt6:password")));
+            WebElement loginButton = wait.until(ExpectedConditions.elementToBeClickable(By.id("j_idt6:loginButton")));
+
+            usernameField.sendKeys("invalidUser");
+            passwordField.sendKeys("wrongPassword");
+            loginButton.click();
+
+        } catch (Exception e) {
+            File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+            FileUtils.copyFile(screenshot, new File("error-screenshot.png"));
+            throw new RuntimeException("Error interacting with the login form", e);
+        }
+    }
+
 
     //Then("the user is redirected to the welcome page")
     @Then("the user is redirected to the welcome page")
@@ -68,6 +88,19 @@ public class LoginSteps {
         String currentUrl = driver.getCurrentUrl();
         if (currentUrl == null || !currentUrl.contains("welcome.xhtml")) {
             throw new AssertionError("User was not redirected to the welcome page!");
+        }
+    }
+
+    @Then("the user stays on the login page")
+    public void verifyUserStaysOnLoginPage() {
+        // Wait for the URL to remain the same (login page URL)
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitTimeInSeconds));
+        wait.until(ExpectedConditions.urlToBe("http://localhost:8080/JSF-JBehave-Selenium-Jacoco/login.xhtml"));
+
+        // Assert that the current URL is still the login page URL
+        String currentUrl = driver.getCurrentUrl();
+        if (currentUrl == null || !currentUrl.equals("http://localhost:8080/JSF-JBehave-Selenium-Jacoco/login.xhtml")) {
+            throw new AssertionError("User was redirected away from the login page!");
         }
     }
 
