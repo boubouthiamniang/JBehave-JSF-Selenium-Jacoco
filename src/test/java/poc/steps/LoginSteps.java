@@ -1,21 +1,22 @@
 package poc.steps;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.apache.commons.io.FileUtils;
 import org.jbehave.core.annotations.*;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.File;
+import java.io.IOException;
 import java.time.Duration;
 
 public class LoginSteps {
 
     private WebDriver driver;
+    private short waitTimeInSeconds = 10;
 
     @BeforeStory
     public void setup() {
@@ -36,50 +37,38 @@ public class LoginSteps {
 
     //@When("the user enters valid credentials")
     @When("the user enters valid credentials")
-    public void enterValidCredentials() {
+    public void enterValidCredentials() throws IOException {
         try {
-            // Use WebDriverWait to wait for the username field to be visible
-            /*WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-            WebElement usernameField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("username")));
-            WebElement passwordField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("password")));
-            WebElement loginButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("loginButton")));*/
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitTimeInSeconds));
 
-            /*WebElement usernameField = driver.findElement(By.id("username"));
-            WebElement passwordField = driver.findElement(By.id("password"));
-            WebElement loginButton = driver.findElement(By.id("loginButton"));*/
-
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-            System.out.println("waiting 20.....");
-            WebElement usernameField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("username")));
-            System.out.println("waiting usernameField.....");
-            WebElement passwordField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("password")));
-            System.out.println("waiting passwordField.....");
-            WebElement loginButton = wait.until(ExpectedConditions.elementToBeClickable(By.id("loginButton")));
-            System.out.println("waiting loginButton.....");
-
-            System.out.println("Username field found: " + usernameField.isDisplayed());
-            System.out.println("Password field found: " + passwordField.isDisplayed());
-            System.out.println("Login button found: " + loginButton.isDisplayed());
-
-            System.out.println("Entering credentials...");
+            WebElement usernameField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("j_idt6:username")));
+            WebElement passwordField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("j_idt6:password")));
+            WebElement loginButton = wait.until(ExpectedConditions.elementToBeClickable(By.id("j_idt6:loginButton")));
 
             usernameField.sendKeys("admin");
             passwordField.sendKeys("password");
             loginButton.click();
+
         } catch (Exception e) {
+            File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+            FileUtils.copyFile(screenshot, new File("error-screenshot.png"));
             throw new RuntimeException("Error interacting with the login form", e);
         }
     }
 
+
     //Then("the user is redirected to the welcome page")
     @Then("the user is redirected to the welcome page")
     public void verifyHomepage() {
+        // Wait for the URL to contain 'welcome.xhtml'
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitTimeInSeconds));
+        wait.until(ExpectedConditions.urlContains("welcome.xhtml")); // Replace with the actual path of your welcome page
+
+        // Assert that the URL is correct after the redirection
         String currentUrl = driver.getCurrentUrl();
-        assert currentUrl != null;
-        if (!currentUrl.endsWith("login.xhtml")) {
-            throw new AssertionError("User was not redirected to the homepage!");
+        if (currentUrl == null || !currentUrl.contains("welcome.xhtml")) {
+            throw new AssertionError("User was not redirected to the welcome page!");
         }
-        driver.quit();
     }
 
     @AfterStory
