@@ -41,9 +41,10 @@ public class LoginSteps {
         try {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitTimeInSeconds));
 
-            WebElement usernameField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("j_idt6:username")));
-            WebElement passwordField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("j_idt6:password")));
-            WebElement loginButton = wait.until(ExpectedConditions.elementToBeClickable(By.id("j_idt6:loginButton")));
+            WebElement usernameField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[id$='username']")));
+            WebElement passwordField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[id$='password']")));
+            WebElement loginButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("input[id$='loginButton']")));
+
 
             usernameField.sendKeys("admin");
             passwordField.sendKeys("password");
@@ -61,9 +62,10 @@ public class LoginSteps {
         try {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitTimeInSeconds));
 
-            WebElement usernameField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("j_idt6:username")));
-            WebElement passwordField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("j_idt6:password")));
-            WebElement loginButton = wait.until(ExpectedConditions.elementToBeClickable(By.id("j_idt6:loginButton")));
+            WebElement usernameField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[id$='username']")));
+            WebElement passwordField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[id$='password']")));
+            WebElement loginButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("input[id$='loginButton']")));
+
 
             usernameField.sendKeys("invalidUser");
             passwordField.sendKeys("wrongPassword");
