@@ -7,6 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import poc.utils.WebDriverUtils;
 
 import java.time.Duration;
 
@@ -37,6 +38,7 @@ public class RegistrationSteps {
         WebElement passwordField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[id$='password']")));
         WebElement registerButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("input[id$='registrationButton']")));
 
+        WebDriverUtils.clearFields(usernameField, usernameField);
         usernameField.sendKeys("newUser");
         passwordField.sendKeys("newPassword");
         registerButton.click();
@@ -49,8 +51,9 @@ public class RegistrationSteps {
         WebElement passwordField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[id$='password']")));
         WebElement registerButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("input[id$='registrationButton']")));
 
-        usernameField.sendKeys("admin"); // Assuming "admin" already exists
-        passwordField.sendKeys("password");
+        WebDriverUtils.clearFields(usernameField, usernameField);
+        usernameField.sendKeys("newUser"); // Assuming "admin" already exists
+        passwordField.sendKeys("newPassword");
         registerButton.click();
     }
 

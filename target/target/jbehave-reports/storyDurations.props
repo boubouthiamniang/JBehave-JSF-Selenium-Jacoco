@@ -1,7 +1,7 @@
 #org.jbehave.core.embedder.StoryManager
-#Fri Dec 20 15:59:24 CET 2024
-stories/login.story=25000
-stories/registration.story=52000
-threadAverage=77000
+#Fri Dec 20 20:54:55 CET 2024
+stories/login.story=6000
+stories/registration.story=4000
+threadAverage=10000
 threads=1
-total=77000
+total=10000
