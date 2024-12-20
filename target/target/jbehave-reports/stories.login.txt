@@ -1,0 +1,52 @@
+Feature: User Login and Logout
+(stories/login.story)
+BeforeSystemStorySteps
+poc.steps.LoginSteps.setup()
+
+BeforeUserStorySteps
+
+Scenario: Successful login with valid credentials
+BeforeSystemScenarioSteps
+
+BeforeUserScenarioSteps
+
+Given the user is on the login page
+When the user enters valid credentials
+Then the user is redirected to the welcome page
+AfterUserScenarioSteps
+
+AfterSystemScenarioSteps
+
+
+Scenario: Unsuccessful login with invalid credentials
+BeforeSystemScenarioSteps
+
+BeforeUserScenarioSteps
+
+Given the user is on the login page
+When the user enters invalid credentials
+Then the user stays on the login page
+AfterUserScenarioSteps
+
+AfterSystemScenarioSteps
+
+
+Scenario: Successful logout
+BeforeSystemScenarioSteps
+
+BeforeUserScenarioSteps
+
+Given the user is logged in
+When the user clicks the logout button
+Then the user is redirected to the login page
+AfterUserScenarioSteps
+
+AfterSystemScenarioSteps
+
+
+AfterUserStorySteps
+
+AfterSystemStorySteps
+poc.steps.LoginSteps.teardown()
+
+

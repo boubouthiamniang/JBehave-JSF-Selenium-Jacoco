@@ -1,0 +1,63 @@
+<story id="0e2385e0-c7a6-46ff-98a5-23d30bb4c2b8" path="stories/login.story" title="Feature: User Login and Logout">
+<beforeSystemStorySteps>
+<step outcome="successful">poc.steps.LoginSteps.setup()</step>
+</beforeSystemStorySteps>
+<beforeUserStorySteps>
+</beforeUserStorySteps>
+<scenario id="1d9250e6-cc8c-4d16-bf17-a6618b86c72d" keyword="Scenario:" title="Successful login with valid credentials">
+<beforeSystemScenarioSteps>
+</beforeSystemScenarioSteps>
+<beforeUserScenarioSteps>
+</beforeUserScenarioSteps>
+<steps>
+<step outcome="successful">Given the user is on the login page</step>
+<step outcome="successful">When the user enters valid credentials</step>
+<step outcome="successful">Then the user is redirected to the welcome page</step>
+</steps>
+<afterUserScenarioSteps>
+</afterUserScenarioSteps>
+<afterSystemScenarioSteps>
+</afterSystemScenarioSteps>
+<timing phase="start">1734692507691</timing>
+<timing phase="end">1734692508959</timing>
+</scenario>
+<scenario id="a71e6880-66c7-4195-9978-ef053bedde6d" keyword="Scenario:" title="Unsuccessful login with invalid credentials">
+<beforeSystemScenarioSteps>
+</beforeSystemScenarioSteps>
+<beforeUserScenarioSteps>
+</beforeUserScenarioSteps>
+<steps>
+<step outcome="successful">Given the user is on the login page</step>
+<step outcome="successful">When the user enters invalid credentials</step>
+<step outcome="successful">Then the user stays on the login page</step>
+</steps>
+<afterUserScenarioSteps>
+</afterUserScenarioSteps>
+<afterSystemScenarioSteps>
+</afterSystemScenarioSteps>
+<timing phase="start">1734692508960</timing>
+<timing phase="end">1734692509363</timing>
+</scenario>
+<scenario id="31176153-361c-44c0-add3-1170d46cd35c" keyword="Scenario:" title="Successful logout">
+<beforeSystemScenarioSteps>
+</beforeSystemScenarioSteps>
+<beforeUserScenarioSteps>
+</beforeUserScenarioSteps>
+<steps>
+<step outcome="successful">Given the user is logged in</step>
+<step outcome="successful">When the user clicks the logout button</step>
+<step outcome="successful">Then the user is redirected to the login page</step>
+</steps>
+<afterUserScenarioSteps>
+</afterUserScenarioSteps>
+<afterSystemScenarioSteps>
+</afterSystemScenarioSteps>
+<timing phase="start">1734692509364</timing>
+<timing phase="end">1734692509905</timing>
+</scenario>
+<afterUserStorySteps>
+</afterUserStorySteps>
+<afterSystemStorySteps>
+<step outcome="successful">poc.steps.LoginSteps.teardown()</step>
+</afterSystemStorySteps>
+</story>
