@@ -2,6 +2,7 @@ Feature: User Login and Logout
 (stories/login.story)
 BeforeSystemStorySteps
 poc.steps.LoginSteps.setup()
+poc.steps.RegistrationSteps.setup()
 
 BeforeUserStorySteps
 
@@ -48,5 +49,6 @@ AfterUserStorySteps
 
 AfterSystemStorySteps
 poc.steps.LoginSteps.teardown()
+poc.steps.RegistrationSteps.teardown()
 
 

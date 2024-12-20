@@ -1,10 +1,11 @@
-<story id="0e2385e0-c7a6-46ff-98a5-23d30bb4c2b8" path="stories/login.story" title="Feature: User Login and Logout">
+<story id="a8e9db78-c18a-465b-9e0d-cd70a041ec40" path="stories/login.story" title="Feature: User Login and Logout">
 <beforeSystemStorySteps>
 <step outcome="successful">poc.steps.LoginSteps.setup()</step>
+<step outcome="successful">poc.steps.RegistrationSteps.setup()</step>
 </beforeSystemStorySteps>
 <beforeUserStorySteps>
 </beforeUserStorySteps>
-<scenario id="1d9250e6-cc8c-4d16-bf17-a6618b86c72d" keyword="Scenario:" title="Successful login with valid credentials">
+<scenario id="3be54795-10a0-4b8d-9b91-f687de72ec0a" keyword="Scenario:" title="Successful login with valid credentials">
 <beforeSystemScenarioSteps>
 </beforeSystemScenarioSteps>
 <beforeUserScenarioSteps>
@@ -18,10 +19,10 @@
 </afterUserScenarioSteps>
 <afterSystemScenarioSteps>
 </afterSystemScenarioSteps>
-<timing phase="start">1734692507691</timing>
-<timing phase="end">1734692508959</timing>
+<timing phase="start">1734706692087</timing>
+<timing phase="end">1734706700250</timing>
 </scenario>
-<scenario id="a71e6880-66c7-4195-9978-ef053bedde6d" keyword="Scenario:" title="Unsuccessful login with invalid credentials">
+<scenario id="2d0dce6f-79e1-47e4-84f3-707f08266a5c" keyword="Scenario:" title="Unsuccessful login with invalid credentials">
 <beforeSystemScenarioSteps>
 </beforeSystemScenarioSteps>
 <beforeUserScenarioSteps>
@@ -35,10 +36,10 @@
 </afterUserScenarioSteps>
 <afterSystemScenarioSteps>
 </afterSystemScenarioSteps>
-<timing phase="start">1734692508960</timing>
-<timing phase="end">1734692509363</timing>
+<timing phase="start">1734706700253</timing>
+<timing phase="end">1734706703171</timing>
 </scenario>
-<scenario id="31176153-361c-44c0-add3-1170d46cd35c" keyword="Scenario:" title="Successful logout">
+<scenario id="8ccfcb11-ed91-410a-a00e-0edbd46e18d4" keyword="Scenario:" title="Successful logout">
 <beforeSystemScenarioSteps>
 </beforeSystemScenarioSteps>
 <beforeUserScenarioSteps>
@@ -52,12 +53,13 @@
 </afterUserScenarioSteps>
 <afterSystemScenarioSteps>
 </afterSystemScenarioSteps>
-<timing phase="start">1734692509364</timing>
-<timing phase="end">1734692509905</timing>
+<timing phase="start">1734706703172</timing>
+<timing phase="end">1734706711354</timing>
 </scenario>
 <afterUserStorySteps>
 </afterUserStorySteps>
 <afterSystemStorySteps>
 <step outcome="successful">poc.steps.LoginSteps.teardown()</step>
+<step outcome="successful">poc.steps.RegistrationSteps.teardown()</step>
 </afterSystemStorySteps>
 </story>

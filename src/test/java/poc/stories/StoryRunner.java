@@ -9,6 +9,7 @@ import org.jbehave.core.reporters.StoryReporterBuilder;
 import org.jbehave.core.steps.InjectableStepsFactory;
 import org.jbehave.core.steps.InstanceStepsFactory;
 import poc.steps.LoginSteps;
+import poc.steps.RegistrationSteps;
 
 import java.util.Arrays;
 import java.util.List;
@@ -34,11 +35,11 @@ public class StoryRunner extends JUnitStories {
 
     @Override
     public InjectableStepsFactory stepsFactory() {
-        return new InstanceStepsFactory(configuration(), new LoginSteps()); // Inject steps
+        return new InstanceStepsFactory(configuration(), new LoginSteps(), new RegistrationSteps()); // Inject steps
     }
 
     @Override
     public List<String> storyPaths() {
-        return List.of("stories/login.story"); // Adjust path if needed
+        return List.of("stories/login.story", "stories/registration.story");
     }
 }

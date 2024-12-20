@@ -1,73 +1,62 @@
 <html>
 <head>
-<title>stories.login</title>
+<title>stories.registration</title>
 <style type="text/css" media="all">
 @import url( "./style/jbehave-core.css" );
 </style>
 </head>
 <body>
-<div id="a8e9db78-c18a-465b-9e0d-cd70a041ec40" class="story">
-<h1>Feature: User Login and Logout</h1>
-<div class="path">stories/login.story</div>
+<div id="bdabb20a-bdb3-436c-a05e-9241008f7114" class="story">
+<h1></h1>
+<div class="path">stories/registration.story</div>
+<div class="narrative"><h2>Narrative:</h2>
+<div class="element inOrderTo"><span class="keyword inOrderTo">As a</span> user</div>
+<div class="element asA"><span class="keyword asA">I want to</span> perform registration</div>
+<div class="element iWantTo"><span class="keyword iWantTo">So that</span> I can login with the new credential
+
+Feature: User Registration</div>
+</div>
 <div class="beforeSystemStorySteps">
 <div class="step successful">poc.steps.LoginSteps.setup()</div>
 <div class="step successful">poc.steps.RegistrationSteps.setup()</div>
 </div>
 <div class="beforeUserStorySteps">
 </div>
-<div id="3be54795-10a0-4b8d-9b91-f687de72ec0a" class="scenario">
-<h2>Scenario: Successful login with valid credentials</h2>
+<div id="4ae0baac-d51a-479b-bcb7-95fbeefdf2a3" class="scenario">
+<h2>Scenario: Successful registration with a new username</h2>
 <div class="beforeSystemScenarioSteps">
 </div>
 <div class="beforeUserScenarioSteps">
 </div>
 <div class="steps">
-<div class="step successful">Given the user is on the login page</div>
-<div class="step successful">When the user enters valid credentials</div>
-<div class="step successful">Then the user is redirected to the welcome page</div>
+<div class="step successful">Given the user is on the registration page</div>
+<div class="step successful">When the user enters a new username and password</div>
+<div class="step pending">Then the user is redirected to the login page after registration <span class="keyword pending">(PENDING)</span><pre class="pending"></pre></div>
 </div>
 <div class="afterUserScenarioSteps">
 </div>
 <div class="afterSystemScenarioSteps">
 </div>
-<h3>start 1734706692087</h3>
-<h3>end 1734706700250</h3>
+<h3>start 1734706725312</h3>
+<h3>end 1734706734914</h3>
 </div>
-<div id="2d0dce6f-79e1-47e4-84f3-707f08266a5c" class="scenario">
-<h2>Scenario: Unsuccessful login with invalid credentials</h2>
+<div id="5635ad92-2a16-414d-b76e-7b8a4b2c5695" class="scenario">
+<h2>Scenario: Unsuccessful registration with an existing username</h2>
 <div class="beforeSystemScenarioSteps">
 </div>
 <div class="beforeUserScenarioSteps">
 </div>
 <div class="steps">
-<div class="step successful">Given the user is on the login page</div>
-<div class="step successful">When the user enters invalid credentials</div>
-<div class="step successful">Then the user stays on the login page</div>
+<div class="step successful">Given the user is on the registration page</div>
+<div class="step successful">When the user enters an existing username and password</div>
+<div class="step successful">Then the user stays on the registration page</div>
 </div>
 <div class="afterUserScenarioSteps">
 </div>
 <div class="afterSystemScenarioSteps">
 </div>
-<h3>start 1734706700253</h3>
-<h3>end 1734706703171</h3>
-</div>
-<div id="8ccfcb11-ed91-410a-a00e-0edbd46e18d4" class="scenario">
-<h2>Scenario: Successful logout</h2>
-<div class="beforeSystemScenarioSteps">
-</div>
-<div class="beforeUserScenarioSteps">
-</div>
-<div class="steps">
-<div class="step successful">Given the user is logged in</div>
-<div class="step successful">When the user clicks the logout button</div>
-<div class="step successful">Then the user is redirected to the login page</div>
-</div>
-<div class="afterUserScenarioSteps">
-</div>
-<div class="afterSystemScenarioSteps">
-</div>
-<h3>start 1734706703172</h3>
-<h3>end 1734706711354</h3>
+<h3>start 1734706734915</h3>
+<h3>end 1734706764143</h3>
 </div>
 <div class="afterUserStorySteps">
 </div>

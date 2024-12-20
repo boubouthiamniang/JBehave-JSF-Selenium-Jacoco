@@ -1,0 +1,55 @@
+<story id="bdabb20a-bdb3-436c-a05e-9241008f7114" path="stories/registration.story" title="">
+<narrative keyword="Narrative:">
+  <inOrderTo keyword="As a">user</inOrderTo>
+  <asA keyword="I want to">perform registration</asA>
+  <iWantTo keyword="So that">I can login with the new credential
+
+Feature: User Registration</iWantTo>
+</narrative>
+<beforeSystemStorySteps>
+<step outcome="successful">poc.steps.LoginSteps.setup()</step>
+<step outcome="successful">poc.steps.RegistrationSteps.setup()</step>
+</beforeSystemStorySteps>
+<beforeUserStorySteps>
+</beforeUserStorySteps>
+<scenario id="4ae0baac-d51a-479b-bcb7-95fbeefdf2a3" keyword="Scenario:" title="Successful registration with a new username">
+<beforeSystemScenarioSteps>
+</beforeSystemScenarioSteps>
+<beforeUserScenarioSteps>
+</beforeUserScenarioSteps>
+<steps>
+<step outcome="successful">Given the user is on the registration page</step>
+<step outcome="successful">When the user enters a new username and password</step>
+<step outcome="pending" keyword="PENDING">Then the user is redirected to the login page after registration<pendingMethod></pendingMethod></step>
+</steps>
+<afterUserScenarioSteps>
+</afterUserScenarioSteps>
+<afterSystemScenarioSteps>
+</afterSystemScenarioSteps>
+<timing phase="start">1734706725312</timing>
+<timing phase="end">1734706734914</timing>
+</scenario>
+<scenario id="5635ad92-2a16-414d-b76e-7b8a4b2c5695" keyword="Scenario:" title="Unsuccessful registration with an existing username">
+<beforeSystemScenarioSteps>
+</beforeSystemScenarioSteps>
+<beforeUserScenarioSteps>
+</beforeUserScenarioSteps>
+<steps>
+<step outcome="successful">Given the user is on the registration page</step>
+<step outcome="successful">When the user enters an existing username and password</step>
+<step outcome="successful">Then the user stays on the registration page</step>
+</steps>
+<afterUserScenarioSteps>
+</afterUserScenarioSteps>
+<afterSystemScenarioSteps>
+</afterSystemScenarioSteps>
+<timing phase="start">1734706734915</timing>
+<timing phase="end">1734706764143</timing>
+</scenario>
+<afterUserStorySteps>
+</afterUserStorySteps>
+<afterSystemStorySteps>
+<step outcome="successful">poc.steps.LoginSteps.teardown()</step>
+<step outcome="successful">poc.steps.RegistrationSteps.teardown()</step>
+</afterSystemStorySteps>
+</story>

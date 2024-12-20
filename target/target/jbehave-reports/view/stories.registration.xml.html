@@ -1,6 +1,6 @@
 <html>
 <head>
-<title>stories.login</title>
+<title>stories.registration</title>
 <style type="text/css" media="all">
 @import url( "./style/jbehave-core.css" );
 </style>
@@ -8,63 +8,53 @@
 <body>
  
 <script type="syntaxhighlighter" class="brush: xml"><![CDATA[
-<story id="a8e9db78-c18a-465b-9e0d-cd70a041ec40" path="stories/login.story" title="Feature: User Login and Logout">
+<story id="bdabb20a-bdb3-436c-a05e-9241008f7114" path="stories/registration.story" title="">
+<narrative keyword="Narrative:">
+  <inOrderTo keyword="As a">user</inOrderTo>
+  <asA keyword="I want to">perform registration</asA>
+  <iWantTo keyword="So that">I can login with the new credential
+
+Feature: User Registration</iWantTo>
+</narrative>
 <beforeSystemStorySteps>
 <step outcome="successful">poc.steps.LoginSteps.setup()</step>
 <step outcome="successful">poc.steps.RegistrationSteps.setup()</step>
 </beforeSystemStorySteps>
 <beforeUserStorySteps>
 </beforeUserStorySteps>
-<scenario id="3be54795-10a0-4b8d-9b91-f687de72ec0a" keyword="Scenario:" title="Successful login with valid credentials">
+<scenario id="4ae0baac-d51a-479b-bcb7-95fbeefdf2a3" keyword="Scenario:" title="Successful registration with a new username">
 <beforeSystemScenarioSteps>
 </beforeSystemScenarioSteps>
 <beforeUserScenarioSteps>
 </beforeUserScenarioSteps>
 <steps>
-<step outcome="successful">Given the user is on the login page</step>
-<step outcome="successful">When the user enters valid credentials</step>
-<step outcome="successful">Then the user is redirected to the welcome page</step>
+<step outcome="successful">Given the user is on the registration page</step>
+<step outcome="successful">When the user enters a new username and password</step>
+<step outcome="pending" keyword="PENDING">Then the user is redirected to the login page after registration<pendingMethod></pendingMethod></step>
 </steps>
 <afterUserScenarioSteps>
 </afterUserScenarioSteps>
 <afterSystemScenarioSteps>
 </afterSystemScenarioSteps>
-<timing phase="start">1734706692087</timing>
-<timing phase="end">1734706700250</timing>
+<timing phase="start">1734706725312</timing>
+<timing phase="end">1734706734914</timing>
 </scenario>
-<scenario id="2d0dce6f-79e1-47e4-84f3-707f08266a5c" keyword="Scenario:" title="Unsuccessful login with invalid credentials">
+<scenario id="5635ad92-2a16-414d-b76e-7b8a4b2c5695" keyword="Scenario:" title="Unsuccessful registration with an existing username">
 <beforeSystemScenarioSteps>
 </beforeSystemScenarioSteps>
 <beforeUserScenarioSteps>
 </beforeUserScenarioSteps>
 <steps>
-<step outcome="successful">Given the user is on the login page</step>
-<step outcome="successful">When the user enters invalid credentials</step>
-<step outcome="successful">Then the user stays on the login page</step>
+<step outcome="successful">Given the user is on the registration page</step>
+<step outcome="successful">When the user enters an existing username and password</step>
+<step outcome="successful">Then the user stays on the registration page</step>
 </steps>
 <afterUserScenarioSteps>
 </afterUserScenarioSteps>
 <afterSystemScenarioSteps>
 </afterSystemScenarioSteps>
-<timing phase="start">1734706700253</timing>
-<timing phase="end">1734706703171</timing>
-</scenario>
-<scenario id="8ccfcb11-ed91-410a-a00e-0edbd46e18d4" keyword="Scenario:" title="Successful logout">
-<beforeSystemScenarioSteps>
-</beforeSystemScenarioSteps>
-<beforeUserScenarioSteps>
-</beforeUserScenarioSteps>
-<steps>
-<step outcome="successful">Given the user is logged in</step>
-<step outcome="successful">When the user clicks the logout button</step>
-<step outcome="successful">Then the user is redirected to the login page</step>
-</steps>
-<afterUserScenarioSteps>
-</afterUserScenarioSteps>
-<afterSystemScenarioSteps>
-</afterSystemScenarioSteps>
-<timing phase="start">1734706703172</timing>
-<timing phase="end">1734706711354</timing>
+<timing phase="start">1734706734915</timing>
+<timing phase="end">1734706764143</timing>
 </scenario>
 <afterUserStorySteps>
 </afterUserStorySteps>

@@ -1,0 +1,48 @@
+
+(stories/registration.story)
+Narrative:
+As a user
+I want to perform registration
+So that I can login with the new credential
+
+Feature: User Registration
+BeforeSystemStorySteps
+poc.steps.LoginSteps.setup()
+poc.steps.RegistrationSteps.setup()
+
+BeforeUserStorySteps
+
+Scenario: Successful registration with a new username
+BeforeSystemScenarioSteps
+
+BeforeUserScenarioSteps
+
+Given the user is on the registration page
+When the user enters a new username and password
+Then the user is redirected to the login page after registration (PENDING)
+(null)
+AfterUserScenarioSteps
+
+AfterSystemScenarioSteps
+
+
+Scenario: Unsuccessful registration with an existing username
+BeforeSystemScenarioSteps
+
+BeforeUserScenarioSteps
+
+Given the user is on the registration page
+When the user enters an existing username and password
+Then the user stays on the registration page
+AfterUserScenarioSteps
+
+AfterSystemScenarioSteps
+
+
+AfterUserStorySteps
+
+AfterSystemStorySteps
+poc.steps.LoginSteps.teardown()
+poc.steps.RegistrationSteps.teardown()
+
+
