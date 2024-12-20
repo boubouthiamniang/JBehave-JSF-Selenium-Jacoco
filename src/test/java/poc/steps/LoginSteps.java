@@ -8,6 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import poc.utils.WebDriverUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -16,7 +17,7 @@ import java.time.Duration;
 public class LoginSteps {
 
     private WebDriver driver;
-    private short waitTimeInSeconds = 10;
+    private final short waitTimeInSeconds = 10;
 
     @BeforeStory
     public void setup() {
@@ -45,7 +46,7 @@ public class LoginSteps {
             WebElement passwordField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[id$='password']")));
             WebElement loginButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("input[id$='loginButton']")));
 
-
+            WebDriverUtils.clearFields(usernameField, usernameField);
             usernameField.sendKeys("admin");
             passwordField.sendKeys("password");
             loginButton.click();
@@ -67,6 +68,7 @@ public class LoginSteps {
             WebElement loginButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("input[id$='loginButton']")));
 
 
+            WebDriverUtils.clearFields(usernameField, usernameField);
             usernameField.sendKeys("invalidUser");
             passwordField.sendKeys("wrongPassword");
             loginButton.click();
@@ -103,6 +105,39 @@ public class LoginSteps {
         String currentUrl = driver.getCurrentUrl();
         if (currentUrl == null || !currentUrl.equals("http://localhost:8080/JSF-JBehave-Selenium-Jacoco/login.xhtml")) {
             throw new AssertionError("User was redirected away from the login page!");
+        }
+    }
+
+    @Given("the user is logged in")
+    public void ensureUserIsLoggedIn() throws IOException {
+        openLoginPage();
+        enterValidCredentials();
+        verifyHomepage();
+    }
+
+    @When("the user clicks the logout button")
+    public void clickLogoutButton() throws IOException {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitTimeInSeconds));
+
+            WebElement logoutButton = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("input[id$='logoutButton']")));
+            logoutButton.click();
+
+        } catch (Exception e) {
+            File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+            FileUtils.copyFile(screenshot, new File("error-logout-screenshot.png"));
+            throw new RuntimeException("Error interacting with the logout button", e);
+        }
+    }
+
+    @Then("the user is redirected to the login page")
+    public void verifyUserIsRedirectedToLoginPage() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitTimeInSeconds));
+        wait.until(ExpectedConditions.urlToBe("http://localhost:8080/JSF-JBehave-Selenium-Jacoco/login.xhtml"));
+
+        String currentUrl = driver.getCurrentUrl();
+        if (currentUrl == null || !currentUrl.equals("http://localhost:8080/JSF-JBehave-Selenium-Jacoco/login.xhtml")) {
+            throw new AssertionError("User was not redirected to the login page after logout!");
         }
     }
 

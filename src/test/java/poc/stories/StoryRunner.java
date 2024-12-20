@@ -39,6 +39,6 @@ public class StoryRunner extends JUnitStories {
 
     @Override
     public List<String> storyPaths() {
-        return Arrays.asList("stories/login.story"); // Adjust path if needed
+        return List.of("stories/login.story"); // Adjust path if needed
     }
 }
